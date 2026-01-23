@@ -1,12 +1,20 @@
 import { Module } from '@nestjs/common';
 import { UcenterController } from './ucenter.controller';
 import { UcenterService } from './ucenter.service';
-import { SharedModule } from './shared/shared.module';
-import { ApiModule } from './api/api.module';
-import { AppConfigModule } from './shared/app.config.module';
+import {
+  AppCacheModule,
+  AppDatabaseModule,
+  AppInitializeModule,
+} from './shared/modules';
 
 @Module({
-  imports: [AppConfigModule, SharedModule, ApiModule],
+  imports: [
+    AppInitializeModule,
+    AppCacheModule,
+    AppDatabaseModule,
+
+    //share end
+  ],
   controllers: [UcenterController],
   providers: [UcenterService],
 })
